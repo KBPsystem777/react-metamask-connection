@@ -6,7 +6,7 @@ const WalletCardEthers = () => {
   const [errorMessage, setErrorMessage] = useState(null)
   const [defaultAccount, setDefaultAccount] = useState(null)
   const [userBalance, setUserBalance] = useState(null)
-  const [connButtonText, setConnButtonText] = useState("Connect Wallet")
+  const [connButtonText, setConnButtonText] = useState("Connect")
   const [provider, setProvider] = useState(null)
 
   const connectWalletHandler = () => {
@@ -40,17 +40,19 @@ const WalletCardEthers = () => {
 
   return (
     <div className="walletCard">
-      <h4> Connection to MetaMask using ethers.js </h4>
-      <button className="btn btn-primary" onClick={connectWalletHandler}>
-        {connButtonText}
-      </button>
-      <div className="accountDisplay">
-        <h3>Address: {defaultAccount}</h3>
+      <h4> Connect your wallet to proceed </h4>
+      <div className="container" style={{ paddingTop: "2em" }}>
+        <button className="btn btn-primary" onClick={connectWalletHandler}>
+          {connButtonText}
+        </button>
+        <div className="accountDisplay">
+          <h3>Address: {defaultAccount}</h3>
+        </div>
+        <div className="balanceDisplay">
+          <h3>Balance: {userBalance}</h3>
+        </div>
+        {errorMessage}
       </div>
-      <div className="balanceDisplay">
-        <h3>Balance: {userBalance}</h3>
-      </div>
-      {errorMessage}
     </div>
   )
 }
